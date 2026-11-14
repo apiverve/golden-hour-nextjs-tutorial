@@ -1,0 +1,88 @@
+:root {
+  --bg: #1c1230;
+  --panel: rgba(255, 255, 255, 0.06);
+  --line: rgba(255, 255, 255, 0.12);
+  --ink: #fbf3e8;
+  --muted: #b9a9c9;
+  --gold: #ffb547;
+  --gold-2: #ff7e5f;
+  --blue: #4f6fd8;
+  --twilight: #2f2754;
+  --day: #ffe7b8;
+  --night: #120b20;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  font-family: var(--font-body), system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(90% 60% at 50% -10%, rgba(255, 126, 95, 0.45), transparent 60%),
+    radial-gradient(70% 50% at 100% 0%, rgba(255, 181, 71, 0.25), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+.shell { container-type: inline-size; max-width: 980px; margin: 0 auto; padding: 34px 18px 40px; display: grid; gap: 20px; }
+
+.hero .eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.2em; font-size: 12px; color: var(--gold); font-weight: 700; }
+.hero h1 { font-family: var(--font-display), serif; font-weight: 400; font-size: 52px; line-height: 1; margin: 8px 0 6px; }
+.hero .sub { margin: 0; color: var(--muted); }
+
+.controls { display: grid; gap: 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips button {
+  padding: 9px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--panel);
+  color: var(--ink); font: inherit; font-size: 14px; cursor: pointer;
+}
+.chips button.on { background: var(--gold); border-color: var(--gold); color: #2a1a05; font-weight: 700; }
+.controls input {
+  justify-self: start; padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line);
+  background: var(--panel); color: var(--ink); font: inherit; color-scheme: dark;
+}
+
+.error { margin: 0; color: #ffb4a8; }
+
+.panel { padding: 22px; border-radius: 24px; background: var(--panel); border: 1px solid var(--line); backdrop-filter: blur(8px); transition: opacity 0.2s; }
+.panel.dim { opacity: 0.55; }
+.missing h1 { font-family: var(--font-display), serif; font-weight: 400; margin: 0 0 8px; }
+.missing p { color: var(--muted); line-height: 1.5; }
+.missing a { display: inline-block; margin-top: 6px; padding: 11px 18px; border-radius: 999px; background: var(--gold); color: #2a1a05; text-decoration: none; font-weight: 700; }
+
+.bar { position: relative; height: 42px; border-radius: 12px; overflow: hidden; background: var(--night); }
+.bar span { position: absolute; top: 0; bottom: 0; }
+.bar .twilight { background: var(--twilight); }
+.bar .blue { background: var(--blue); }
+.bar .golden { background: linear-gradient(90deg, var(--gold-2), var(--gold)); }
+.bar .day { background: var(--day); }
+.bar .noon { position: absolute; top: -2px; bottom: -2px; width: 2px; background: #fff; box-shadow: 0 0 8px #fff; }
+.hours { display: flex; justify-content: space-between; margin-top: 6px; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.note { margin: 14px 0 0; color: var(--gold); }
+
+.moments { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+.moments div { padding: 14px; border-radius: 16px; }
+.moments .golden { background: linear-gradient(135deg, rgba(255, 126, 95, 0.3), rgba(255, 181, 71, 0.22)); }
+.moments .blue { background: rgba(79, 111, 216, 0.25); }
+.moments h2 { margin: 0; font-size: 12px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.moments p { margin: 6px 0 0; font-size: 20px; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.facts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 18px 0 0; }
+.facts div { border-top: 1px solid var(--line); padding-top: 10px; }
+.facts dt { font-size: 12px; color: var(--muted); }
+.facts dd { margin: 2px 0 0; font-size: 18px; font-weight: 700; }
+
+.foot { text-align: center; font-size: 12px; color: var(--muted); }
+.foot a { color: var(--gold); }
+
+@container (min-width: 720px) {
+  .controls { grid-template-columns: 1fr auto; align-items: center; }
+  .moments { grid-template-columns: repeat(4, 1fr); }
+  .facts { grid-template-columns: repeat(4, 1fr); }
+  .hero h1 { font-size: 72px; }
+  .panel { padding: 30px; }
+}
+@container (max-width: 380px) {
+  .moments { grid-template-columns: 1fr; }
+}
